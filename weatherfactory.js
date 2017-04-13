@@ -1,7 +1,7 @@
 (function(){
-	var weatherfactory = function(){
+	var weatherfactory = function($http){
 
-		var submit = function(){
+		var getData = function($http){
 	  
 			var URL = 'https://api.apixu.com/v1/current.json';
 		    var request = {
@@ -18,16 +18,20 @@
 		  
 		    $http(request)
 		      .then(function(response) {
-		        vm.data = response.data;
-		        return vm.data;
+		        data = response.data;
+		        return data;
 		        
 
 		      }).
 		      catch(function(response) {
-		        vm.data = response.data;
-		        return vm.data;
+		        data = response.data;
+		        return data;
 		        
 		      });
+		};
+
+		return {
+			getData: getData
 		};
 
 	};
